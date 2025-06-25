@@ -1,0 +1,5 @@
+flask
+faiss-cpu
+langchain>=0.1.0
+sentence-transformers
+llama-cpp-python==0.2.24
