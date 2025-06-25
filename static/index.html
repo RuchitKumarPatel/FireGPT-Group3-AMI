@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wildfire Response Assistant</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f4f4f4; }
+    h1 { color: #333; }
+    input, textarea { width: 100%; padding: 10px; margin: 10px 0; }
+    button { padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; }
+    button:hover { background: #218838; }
+    #response { margin-top: 20px; padding: 15px; background: #fff; border-left: 5px solid #28a745; }
+  </style>
+</head>
+<body>
+  <h1>Wildfire Strategy Assistant</h1>
+  <textarea id="query" rows="5" placeholder="Ask how to fight wildfires..."></textarea>
+  <button onclick="sendQuery()">Submit</button>
+  <div id="response"></div>
+
+  <script>
+    async function sendQuery() {
+      const query = document.getElementById('query').value;
+      const responseDiv = document.getElementById('response');
+      responseDiv.innerText = 'Thinking...';
+      try {
+        const res = await fetch('/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query })
+        });
+        const data = await res.json();
+        responseDiv.innerText = data.response || 'No response received.';
+      } catch (err) {
+        responseDiv.innerText = 'Error: ' + err.message;
+      }
+    }
+  </script>
+</body>
+</html>

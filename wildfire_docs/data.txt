@@ -1,0 +1,65 @@
+Forest and bush fires have been around for as long as those landscapes have existed. But never before in recorded human history has our planet seen such widespread and intense wildfires. Since the summer of 2023, 
+it’s been possible to scientifically quantify this trend. A team from the University of Tasmania used satellite data to analyze the energy of major fires between 2003 and 2023. They identified 2,913 extreme fires 
+that between them released more energy than 99.99 percent of all the fires investigated during this period. Over time, the number of extreme fires rose from around 100 per year to more than 200. While the total 
+energy of the 20 most serious fires in the first year was around 60,000 megawatts, 20 years later it was more than 130,000 megawatts. According to the study, fires have increased everywhere, but most notably in the 
+Arctic and subarctic forests of the northern hemisphere and in the coniferous forests of temperate latitudes.
+
+Overview of fires worldwide: Satellite images from NASA show where the world is currently burning. Each red dot on NASA’s world fire map represents a fire.
+
+ 
+MTU.DE
+Engines for helicopters
+Transporting heavy loads and landing troops in hard-to-reach areas calls for high-performance helicopters.
+
+Best keep firefighting aircraft and helicopters ready for takeoff
+This comes as no surprise to Alexander Held, Senior Expert at the European Forest Institute in Bonn, Germany. “Climate change is making extreme weather more frequent, leading to more extreme fires: increasing drought provides more and more fuel for forest fires, so they become hotter, bigger, and more intense.” This is making firefighting increasingly difficult. Especially in areas that are more difficult to access, or where there is an extreme danger of forest fires, firefighting aircraft and helicopters are the only option for a truly rapid first attack. To be able to get to the source of the fire as quickly as possible, it’s best to keep the aircraft parked on the runway, fueled and ready for takeoff. Better still is to have them already in the air on patrol.
+
+Chemicals make the water gel-like, dyes make it visible
+Whether in a firefighting aircraft or a firefighting helicopter, the crew can’t simply switch to autopilot. Where fire rages, hot air rises, meaning the flying firefighters often have to deal with bone-rattling turbulence. In addition, smoke and fumes impair their visibility. As a result, tragic accidents occur time and again, often with fatalities among the crew.
+
+43580505864_49357dcfb7_o_web Hover over the image for a bigger view ©Bundeswehr / Johannes Heyn
+A CH-53 helicopter fills Smokey's 5,000-litre water tank in a lake.
+The aircraft take on water either at their home airport or on their way to fight the fire. The latter involves perilous maneuvers as pilots bring their firefighting aircraft into direct contact with the surface of a lake or the sea to literally scoop the water into their tanks. Helicopters hover over the water and drop their external tanks, which are usually suspended from ropes, down into the water.
+
+As a rule, flying firefighters add chemicals to the water to give it a gel-like property that allows the water to adhere better to trees and bushes. Compounds based on ammonium phosphate deliver an additional cooling effect. Adding often brightly colored dyes helps pilots identify where water has already been dropped.
+
+Virtual-reality training for aerial firefighting or rescue exercises
+But without support on the ground, fighting wildfires from the air won’t achieve much. “The crucial thing is that, before anything else, we do our homework in fire management on the ground,” Held says. In commercial forests, that starts with the choice of tree – a key consideration. Resin-rich conifers, especially pines, burn particularly well. That’s why the owners of large pine forests often rely on firebreaks formed by poplars, robinia, or red oaks. Tracks through the forest that provide access for forestry machinery have a similar effect. But regardless of their preventive function, it’s essential to maintain these forest tracks. After all, if a fire does break out, the firefighters on the ground need to get to it as quickly as possible.
+
+ 
+In order to prevent and contain the spread of wild fires in densely forested areas, fire mitigation lines are one of the most widely used solutions worldwide.
+
+The surest path to containing a wildfire is when air and ground forces act in a coordinated manner. Which fires would require enormous effort to reach using hose lines and are therefore better fought from the air? When does it make sense to hastily cut new firebreaks in the forest? And exactly when and where should airborne firefighters drop their water? Any firefighters on the ground need time to withdraw so they can avoid the danger of trees toppling under the weight of the water being dropped from the air. If helicopters have filled their external tanks in shallow lakes or riverbeds, the water they dump out of the sky can contain stones.
+
+Fighting fires with high tech: Modern approaches to managing wildfires
+These days, cutting-edge technologies and innovations have become commonplace in forest firefighting. Infrared sensor technologies on drones – or, in remote areas, via satellite – enable the early detection of fires, often before the flames are visible to the human eye. AI and machine learning can help analyze and process large amounts of data, such as satellite photos, weather forecasts, or readings from temperature sensors distributed throughout the forest. These technologies help either in predicting the probability of fires or in correctly interpreting early warning signs. Once a fire has broken out, they help monitor its spread. Virtual-reality training also provides valuable assistance in aerial firefighting training, rescue exercises, and wildfire scenarios.
+
+heimdall_drohne Hover over the image for a bigger view ©DLR
+The aerial images and temperature data make it easier for the emergency services on the ground to decide where to position which crew and equipment.
+waldbrand_aus_der_sicht_einer_drohne_mit_einer_vis Hover over the image for a bigger view ©DLR
+Forest fire from the perspective of a drone equipped with visible-light and thermal imaging cameras.
+Overview of the different models:
+dc-10-air-tanker Hover over the image for a bigger view ©Steven A Herrera / Shutterstock.com
+The three-engine jet DC-10 Air Tanker can drop 45,000 liters of water or fire retardant per mission. When necessary, its crew can release the entire load in just eight seconds.
+McDonnel Douglas DC-10 Air Tanker
+For many years, a converted Boeing 747-400 known as the Global Supertanker held the title of the biggest firefighting aircraft. However, when work began in 2021 to convert it into a “normal” freighter, it ceded this honor to the McDonnel Douglas DC-10 Air Tanker, a three-engine jet that can drop 45,000 liters of water or fire retardant per mission. While the Global Supertanker’s water tanks were housed within its fuselage, the DC-10 Air Tanker has special tanks under the fuselage. When necessary, its crew can release the entire load in just eight seconds. Alternatively, it can “lay” a water trail on the ground up to 1.6 kilometers long. To prevent the aircraft’s center of gravity from shifting abruptly when it releases its water, baffles divide the tanks into sectors that can then empty evenly.
+
+3-aff-01-water-bombing-1408x Hover over the image for a bigger view ©Viking Air
+The amphibious aircraft Canadair CL-415 is powered by two Pratt & Whitney turboprop engines.
+Canadair CL-415
+The Canadair CL-415 is probably the most spectacular firefighting aircraft in terms of how it takes on water: once in the air, it scoops the water into its 6,100-liter tanks in a touch-and-go maneuver on the water’s surface, with the amphibious aircraft reaching speeds of up to 90 knots (almost 167 km/h). Support floats fitted almost at the end of the wings prevent the wingtips from dipping into the water. The amphibious aircraft can scoop up 6,137 liters of water while flying over a body of water. Its predecessor model, the CL-215, is still in use. Deliveries of its successor model, the De Havilland Canadair 515, are set to commence in 2027.
+
+2-p38a6663-1408x Hover over the image for a bigger view
+The most efficient and versatile firefighting aircraft Air Tractor AT-802F can take off and land on gravel and grass runways.
+Air Tractor AT-802F and PZL M-18 Dromader
+For an unbeatable ratio of aircraft weight to transportable water load, only one aircraft comes into question: with an unladen weight of just 3,270 kilograms, the small Air Tractor AT-802F can carry a full 3,100 liters of water. This robust single-propeller two-seater also has no trouble landing on gravel or grass runways. The M-18 Dromader from Polish manufacturer PZL has similar qualities: a monoplane with comparable dimensions, capacity for 2,200 liters of water, and excellent low-speed capabilities.
+
+4-loescheinsatz-thueringen-1408x Hover over the image for a bigger view ©Bundespolizei
+Airbus Super Puma: Operated by the German Federal Police, this helicopter can hold 2,000 liters of water.
+Firefighting helicopters
+Equipped with external water tanks, firefighting helicopters can release their load almost exactly over the fire. And that’s true for virtually any terrain, including narrow ravines that firefighting aircraft can’t fly through for safety reasons. Smaller helicopters such as the Airbus Helicopters H135 can carry about 500 liters of water. Equipped with Bambi Buckets, the NH-90 helicopters operated by the German Armed Forces can carry 2,000 liters. The Sikorsky CH-53, which is quite a lot larger, can also drop the largest volume: 5,000 liters.
+
+img_2880_web Hover over the image for a bigger view ©PEELIKAN
+PEELIKAN: A firefighting drone system that will revolutionize firefighting and provide an efficient supplement to conventional extinguishing methods.
+Drones to fight forest fires
+Fire departments could soon be using drones not only for surveillance but also directly for firefighting. This is the aim of a research project being conducted by research partners in the German state of Brandenburg, entitled “Pilot development and firefighting testing of a firefighting drone swarm for direct vegetation firefighting,” or PEELIKAN for short (an acronym derived from its full German name). Funded by the German Federal Ministry of Education and Research (BMBF), PEELIKAN’s first test flights took place at the end of 2024. According to the research partners, a seamless drone circuit could transport more than 140,000 liters of water per day to the scene of a fire. The drones are primarily intended for areas that are difficult to access or for forests that are strewn with munitions.
