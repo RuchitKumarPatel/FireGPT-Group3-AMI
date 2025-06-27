@@ -9,7 +9,7 @@ FireGPT is an offline-capable Retrieval-Augmented Generation (RAG) system design
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/FireGPT.git
+git clone https://github.com/RuchitKumarPatel/FireGPT.git
 ```
 
 ### 2. Navigate to the Repository
@@ -39,17 +39,16 @@ conda activate rag_env
 Download the quantized LLaMA model file:
 
 ```
-llama-2-7b-chat.Q4_K_M.gguf
+[llama-2-7b-chat.Q4_K_M.gguf] (https://drive.google.com/file/d/1UIsEhE8eyYDlUFDFmOGA7MFfjeSNiIlR/view?usp=sharing)
 ```
 
-Place it into a folder named `models/` at the root of the project:
+Place it into a folder named `FireGPT` at the root of the project:
 
 ```bash
-mkdir -p models/
-mv path/to/llama-2-7b-chat.Q4_K_M.gguf models/
+FireGPT/llama-2-7b-chat.Q4_K_M.gguf
 ```
 
-> **Note**: You can download the `.gguf` file from Hugging Face or another source you trust. Make sure you comply with Meta’s LLaMA licensing terms.
+> **Note**: You can download the `.gguf` file from the Google Drive link provided
 
 ### 6. Run the Application
 
@@ -95,5 +94,5 @@ Make sure you comply with:
 
 ## 👷 Maintainer
 
-Developed and maintained by **[Your Name]**  
+Developed and maintained by **[Sven Oeder]**  
 Feel free to open issues or pull requests!
