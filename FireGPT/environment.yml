@@ -1,0 +1,17 @@
+name: rag_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - flask
+  - faiss-cpu
+  - numpy=1.24.4
+  - scipy=1.10.1
+  - pytorch
+  - pip
+  - pip:
+      - langchain
+      - langchain-community
+      - sentence-transformers
+      - llama-cpp-python
