@@ -225,4 +225,61 @@ function removeTypingIndicator() {
 }
 
 // Export functions for global access
-window.sendMessage = sendMessage; 
+window.sendMessage = sendMessage;
+
+// === Model Selector Logic ===
+async function fetchModelsAndPopulateSelector() {
+    const selector = document.getElementById('llm-select');
+    if (!selector) return;
+    try {
+        const res = await fetch('/models');
+        const data = await res.json();
+        selector.innerHTML = '';
+        data.models.forEach(model => {
+            const opt = document.createElement('option');
+            opt.value = model;
+            opt.textContent = model;
+            if (model === data.current) opt.selected = true;
+            selector.appendChild(opt);
+        });
+    } catch (e) {
+        selector.innerHTML = '<option>Unavailable</option>';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchModelsAndPopulateSelector();
+    const selector = document.getElementById('llm-select');
+    if (selector) {
+        selector.addEventListener('change', async function() {
+            const model = this.value;
+            const res = await fetch('/set_model', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ model })
+            });
+            if (res.ok) {
+                showModelToast(`Model switched to: ${model}`);
+            } else {
+                showModelToast('Failed to switch model', true);
+            }
+        });
+    }
+});
+
+function showModelToast(msg, isError=false) {
+    let toast = document.createElement('div');
+    toast.textContent = msg;
+    toast.style.position = 'fixed';
+    toast.style.top = '50px';
+    toast.style.right = '24px';
+    toast.style.background = isError ? '#ff6b6b' : '#667eea';
+    toast.style.color = 'white';
+    toast.style.padding = '8px 18px';
+    toast.style.borderRadius = '6px';
+    toast.style.fontSize = '1em';
+    toast.style.opacity = '0.95';
+    toast.style.zIndex = 3000;
+    document.body.appendChild(toast);
+    setTimeout(() => { toast.remove(); }, 2200);
+} 

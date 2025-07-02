@@ -4,7 +4,7 @@ FireGPT is an offline-capable Retrieval-Augmented Generation (RAG) system design
 
 ---
 
-## 🔄 System Architecture & Flow
+## System Architecture & Flow
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -32,7 +32,7 @@ FireGPT is an offline-capable Retrieval-Augmented Generation (RAG) system design
 └─────────────────┘    └─────────────────┘    │   mentions      │
                                               └─────────────────┘
 ---
-
+```
 ## 🚀 Setup Instructions
 
 ### 1. Clone the Repository
