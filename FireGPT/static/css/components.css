@@ -267,6 +267,16 @@
     display: block !important;
 }
 
+.custom-loading-icon {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.6; transform: scale(0.95); }
+}
+
 @media (max-width: 768px) {
     .hidden-mobile {
         display: none !important;
@@ -286,3 +296,39 @@
         display: block !important;
     }
 } 
+
+.map-icon {
+  font-size: 1.3rem;
+  text-align: center;
+  line-height: 1.3rem;
+}
+
+.map-icon:hover {
+  color: #667eea;
+  cursor: pointer;
+}
+
+.custom-water-icon {
+    background: transparent;
+    border: none;
+}
+
+.custom-hospital-icon {
+    background: transparent;
+    border: none;
+}
+
+.custom-police-icon {
+    background: transparent;
+    border: none;
+}
+
+.custom-hydrant-icon {
+    background: transparent;
+    border: none;
+}
+
+.custom-safe-zone-icon {
+    background: transparent;
+    border: none;
+}

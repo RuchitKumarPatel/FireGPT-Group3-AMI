@@ -150,6 +150,7 @@
         <div class="map-controls">
           <button onclick="mapManager.resetView()">Reset View</button>
           <button onclick="mapManager.clearMarkers()">Clear Markers</button>
+          <button onclick="mapManager.enableFirePlacement()">Add Fire Location</button>
         </div>
       </div>
     </div>
@@ -169,6 +170,29 @@
     console.log('Map Manager loaded:', !!window.mapManager);
     console.log('CSS files loaded:', document.styleSheets.length);
   </script>
+
+  <script>
+    function displayBotMessage(message) {
+      const chatMessages = document.getElementById('chatMessages');
+      
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message', 'bot');
+      
+      // Sanitize the message to prevent HTML injection if the model output is untrusted
+      const sanitizedMessage = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      
+      messageElement.innerHTML = `
+        <div class="message-avatar">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="message-content">
+          ${sanitizedMessage.replace(/\n/g, '<br>')}
+        </div>
+      `;
+      
+      chatMessages.appendChild(messageElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the new message
+    }
+  </script>
 </body>
 </html>
-
