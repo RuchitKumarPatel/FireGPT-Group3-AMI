@@ -132,6 +132,7 @@ This is the easiest and most reliable way to get FireGPT running.
 ```
 .
 ├── app.py                  # Main Python (Flask/FastAPI) application
+├── llama-2-7b-chat.Q4_K_M.gguf
 ├── Dockerfile              # Docker container configuration
 ├── environment.yml         # Conda environment definition
 ├── requirements.txt        # Python package requirements
