@@ -1,0 +1,137 @@
+# Firefighting Action Plan and Operational Guide
+
+## 1. Foundational Strategies and Command
+
+### 1.1. Core Firefighting Principles
+The primary goal of vegetation firefighting is to prevent the fire from spreading, especially from the ground to the treetops to avoid a full-blown crown fire. The strategy is aimed at containing the fire, as complete extinguishment of large areas is often not feasible in the initial stages. Hand tools are as critical as water, particularly in rough terrain or where water is scarce.
+
+### 1.2. Firefighting Strategies
+* **Direct Attack (Offensive):** Involves attacking the fire front directly with firefighting crews, vehicles, and aerial water drops. This is most effective against the wind direction at the head of the fire but carries high risk. It is only suitable for low flame heights (up to 1 meter).
+* **Indirect Attack (Defensive):** Used when a direct attack is too dangerous (flames are 3 meters or higher). This strategy involves stopping the fire by creating firebreaks (wound strips) or utilizing existing barriers like roads. It allows crews to work without direct exposure to heat and smoke.
+* **Flank/Parallel Attack:** A method used when the fire is too intense for a direct frontal assault. Crews attack the sides (flanks) of the fire, gradually containing it.
+
+### 1.3. Incident Command and Coordination
+* **Incident Command:** An Incident Commander (IC) determines the overall structure, designates operational sectors, and manages communication. For wildland fires, the fire service is typically in charge of the incident.
+* **Aeronautical Command:** While the IC has tactical command, the Pilot in Command (PIC) of each aircraft retains ultimate aeronautical responsibility and can refuse a mission for safety reasons.
+* **Sector Commander "Air" (EAL):** For any planned flight operations, a Sector Commander for Air Operations should be appointed. This role is responsible for structuring the airspace, allocating missions to aircraft, advising the IC, and ensuring safe flight operations.
+* **Tactical Drop Coordinator:** A critical link between air and ground units, this person is positioned on the ground to coordinate aerial drops, ensure the safety of ground crews by clearing drop zones, and provide feedback on the effectiveness of the drops.
+
+### 1.4. Fire Behavior Assessment and Reconnaissance
+A thorough reconnaissance of the situation is essential for successful firefighting.
+* **Tactical Priorities:**
+    1.  Protection of people
+    2.  Protection of animals
+    3.  Protection of structures (buildings, infrastructure)
+    4.  Protection of vegetation at risk of crown fire
+* **Assessment Factors:**
+    * **Flame Length:** Dictates the appropriate strategy.
+        * **Up to 1m:** Direct attack with hand tools is possible.
+        * **1-3m:** Too intense for direct hand tool use. Requires hose lines, backpack sprayers, and flanking attacks.
+        * **3m+:** Extreme intensity. Direct attack is not possible. Requires indirect firefighting, heavy equipment, and aerial support.
+    * **Smoke Column:** The color and shape of the smoke column provide crucial information about the fire's behavior, even from a distance.
+    * **Other Factors:** Type of fire (ground, crown), fuel load, topography, wind direction, and access/escape routes must be assessed.
+
+## 2. Ground Crew Operations
+
+### 2.1. Self-Sufficient Ground Teams
+Self-sufficient firefighting teams often bear the main burden of firefighting, particularly in large wildland fires. Their primary role is to contain and control the fire rather than extinguish it completely.
+* **Key Tasks:**
+    * Cutting firebreaks (aisles or wound strips) in strategic locations.
+    * Using fire itself (backfiring) to secure these firebreaks.
+    * Patrolling large areas to find and extinguish spot fires caused by flying embers.
+    * Extinguishing ground fires and performing follow-up work.
+
+### 2.2. Ground Crew Equipment Loadout
+A well-equipped group-strength (squad) firefighting team should have the following tools:
+* **For Creating Firebreaks and Direct Attack:**
+    * Chainsaw with accessories
+    * Flat hoes / Forest fire axes (e.g., Pulaski axe)
+    * Forest fire universal tools (e.g., GORGUI Master)
+    * US forestry shovels
+    * Fire swatters/patches
+* **For Extinguishing and Mop-Up:**
+    * Water backpacks / Backpack sprayers
+* **Example Squad Distribution:**
+    * **Group Leader:** Directs the operation.
+    * **Engineer:** Operates chainsaw or carries a water backpack.
+    * **Attack Squad:** Equipped with a fire swatter and shovel for direct attack support.
+    * **Water Squad:** Equipped with a water backpack and Pulaski axe for fighting spot fires.
+    * **Hose/Line Squad:** Equipped with a universal tool and flat hoe for creating wound strips.
+
+### 2.3. Personal Protective Equipment (PPE) for Vegetation Fires
+A balance must be struck between protection from flames and heat, and managing heat stress.
+* **Clothing:** A single-layer turnout suit over long underwear is recommended. Multi-layered structural firefighting gear can cause heat stress.
+* **Head/Face Protection:** A lightweight helmet with neck protection, along with tight-fitting, fog-free safety goggles, is essential. A flame protection hood or a specialized vegetation fire protection mask (e.g., Hot Shield) protects against flying sparks and radiant heat.
+* **Footwear:** Robust, heat-resistant lace-up boots are crucial for preventing ankle injuries in rough terrain and protecting against embers.
+* **Additional Gear:** Every emergency worker should carry a signal whistle, protective gloves, and have access to drinking water, sun cream, and insect repellent.
+
+### 2.4. Tactics: Creating and Securing Firebreaks
+Firebreaks (or wound strips) are created to stop the advance of intense fires.
+* **Procedure:**
+    1.  **Sizing:** The width of the vegetation-free wound strip should be at least twice the height of the surrounding vegetation or the expected flame length.
+    2.  **Clearing:** Use heavy equipment (bulldozers, forestry machines) whenever possible to create the strip by exposing mineral soil.
+    3.  **Manual Creation:** If using hand tools, the sequence is typically: cutting tools (chainsaws, axes), followed by digging/scraping tools (hoes, Pulaski axes), and finally raking/clearing tools (rakes, shovels).
+    4.  **Securing the Line:**
+        * **Pre-firing/Burning Out:** Setting a controlled fire on the side of the firebreak facing the main fire to widen the break and remove fuel.
+        * **Backfiring:** Setting a fire between the main fire line and the firebreak to consume the fuel in its path.
+        * **Note:** Pre-firing and backfiring are advanced techniques that must only be performed by specially trained and authorized personnel.
+    5.  **Monitoring:** Once the main fire reaches the strip, teams with water backpacks and hand tools must patrol the line to extinguish any crossovers and check the hinterland for spot fires.
+
+## 3. Aerial Firefighting Operations
+
+### 3.1. Aerial Platforms and Their Roles
+* **Drones (UAVs):** Primarily used for intelligence, surveillance, and reconnaissance (ISR). They provide real-time video and thermal imaging to detect hotspots, map the fire perimeter, and monitor spread. They are not to be used in the same airspace at the same time as manned aircraft.
+* **Helicopters:** Agile and ideal for precision work in rugged terrain.
+    * **Uses:** Targeted water/foam drops on hotspots, transporting "helitack" crews and equipment, reconnaissance, and medical evacuation.
+    * **Equipment:** Can be equipped with external buckets (like Bambi Buckets) or internal belly tanks.
+* **Fixed-Wing Aircraft:** Used for rapid, long-range response and delivering large volumes of retardant.
+    * **SEATs (Single-Engine Air Tankers):** Agile aircraft for initial attack on smaller fires.
+    * **LATs (Large Air Tankers) & VLATs (Very Large Air Tankers):** Converted multi-engine or jet aircraft that drop extensive retardant lines to slow the spread of large wildfires.
+
+### 3.2. Airspace Management and Communication
+* **Deconfliction:** To prevent collisions, airspace is strictly managed.
+    * Helicopters and fixed-wing aircraft should not be used in the same section at the same altitude simultaneously.
+    * When multiple aircraft of the same type are used, they must operate in a coordinated, one-way traffic pattern.
+    * The Sector Commander "Air" defines flight levels, holding areas, and approach/departure corridors.
+* **Communication:** A clear communication plan is vital.
+    * Standardized radio channels are used for air-to-air and air-to-ground communication.
+    * Aircraft are often marked with large, simple numbers to make them easy to identify and address over the radio.
+    * GPS coordinates in WGS-84 format should be used for all location information to avoid errors.
+
+### 3.3. Aerial Drop Tactics
+* **"AFFE" Tactic:** A common strategy for aerial suppression:
+    1.  **A**nchor: Start the water/retardant drops at a secure anchor point (e.g., a road, river, or the rear of the fire).
+    2.  **F**lanks: Work along the flanks of the fire with overlapping drops.
+    3.  **F**ront: Move towards the head (front) of the fire.
+    4.  **E**ncircle: Complete the containment line, effectively "tying up" the fire front.
+* **Drop Placement:** The general rule is to drop the load so that **one-third lands in the "black"** (already burnt area) and **two-thirds lands in the "green"** (unburnt fuel). This cools the edge and simultaneously treats the fuel ahead of the fire.
+* **Helicopter Drop Technique:**
+    * Drops should be made while moving forward (at least 15 kt / 30 km/h) to avoid fanning the flames with rotor downwash. Spot drops from a hover should be avoided.
+    * Drop height affects the water's impact. A lower drop creates a more compact, penetrating jet for dense vegetation, while a higher drop provides a finer spray for grassland.
+* **Fixed-Wing Retardant Drops:**
+    * Used to create chemical firebreaks ahead of the fire. The retardant coats vegetation, slowing its ignition.
+    * Drops are not meant to extinguish the fire directly but to slow its spread, giving ground crews time to build containment lines.
+
+## 4. Safety and Logistics
+
+### 4.1. The B-K-R-S Safety Rules
+All emergency personnel must know and follow these fundamental safety rules:
+* **B - Beobachtung (Observation):** Post independent lookouts/safety officers to watch for sudden changes in weather or fire behavior and warn the crews.
+* **K - Kommunikation (Communication):** Ensure there is a constant, reliable communication link with the incident command and within the unit. Operations should not proceed if communication is lost.
+* **R - Rückzugsweg (Retreat Route):** Every crew must have a pre-determined, marked, and known escape route that leads to a safety zone. The route should have a low fire load.
+* **S - Sicherheitszone (Safety Zone):** Establish a safety zone where emergency crews are safe from the fire. This can be a road, large clearing, or body of water. In a forest, it should be at least twice the length of the adjacent trees.
+
+### 4.2. Safety During Aerial Operations
+* **On the Ground:** Keep landing zones and load pickup areas clear of loose debris and unauthorized personnel. Approach helicopters only after being cleared by the pilot or crew.
+* **During Drops:** The drop zone must be cleared of all personnel before a drop occurs. A safety distance of 20-30 meters on both sides of the flight axis is a minimum. Take shelter inside vehicles if possible, but be aware that heavy drops can cause damage. Be alert for falling branches.
+
+### 4.3. Logistics
+* **Water Supply:** The continuous availability of water is critical.
+    * Identify and map all potential water extraction points: natural bodies of water, cisterns, artificial ponds.
+    * Ensure access routes are maintained and signposted.
+    * For helicopter operations, portable water tanks (Flex tanks, roll-off containers) can be set up and kept full by water tenders to create efficient dip sites close to the fire.
+* **Personnel Support:**
+    * **Hydration:** Each emergency worker should drink approximately one liter of water per hour.
+    * **Nutrition:** Provide an adequate supply of energy in the form of fruit and food.
+    * **Personnel Replacement:** Heavy physical work requires regular crew rotation to prevent exhaustion. Ensure sufficient relief personnel are available.
+* **Navigation in Remote Areas:** For incoming units, use simple, effective methods to mark routes at intersections, such as laying traffic cones on their side with the tip pointing in the correct direction of travel.

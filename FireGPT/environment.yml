@@ -1,4 +1,4 @@
-name: rag_env
+name: FireGPT
 channels:
   - conda-forge
   - defaults

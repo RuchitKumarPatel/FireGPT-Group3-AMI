@@ -1,0 +1,84 @@
+# Aerial Firefighting Technologies and Strategies
+
+## 1. Key Platforms
+### Fixed-Wing Aircraft
+- **Examples**: Air Tankers (e.g., DC-10, CL-415), SEATs (Single Engine Air Tankers).
+- **Roles**: Large-scale retardant/water drops, perimeter control.
+- **Advantages**: High capacity (up to 10,000+ gallons), long-range.
+- **Limitations**: Requires runways; less agile in rugged terrain.
+
+### Helicopters
+- **Examples**: Sikorsky CH-53, Airbus H135.
+- **Roles**: Precision drops, crew transport, hotspot targeting.
+- **Advantages**: Vertical takeoff/landing, adaptable to tight spaces.
+- **Limitations**: Lower payload (500–5,000 liters), fuel-dependent.
+
+### Drones (UAVs)
+- **Examples**: DJI Matrice 300, fixed-wing surveillance drones.
+- **Roles**: Reconnaissance, thermal imaging, real-time mapping.
+- **Advantages**: Safe for high-risk zones, 24/7 deployability.
+- **Limitations**: Limited payload; regulatory restrictions.
+
+---
+
+## 2. Firefighting Strategies
+### Wildfires
+- **Objective**: Contain perimeter, protect ecosystems.
+- **Tactics**:
+  1. Retardant lines ahead of fire fronts.
+  2. Aerial ignition for backburns.
+  3. Coordination with ground crews via Air Attack Supervisors.
+
+### Urban-Wildland Interface
+- **Objective**: Protect structures, evacuate civilians.
+- **Tactics**:
+  1. Targeted foam/water drops on rooftops.
+  2. Drones for situational awareness.
+  3. Night ops with IR-equipped aircraft.
+
+### Industrial Fires
+- **Objective**: Prevent explosions, contain hazardous materials.
+- **Tactics**:
+  1. Foam blankets for fuel pools.
+  2. Helicopter-inserted hazmat teams.
+  3. Airborne gas sensors.
+
+---
+
+## 3. Operational Procedures
+### Retardant Drops
+1. **Planning**: Use GIS maps to identify drop zones.
+2. **Execution**: Fly at 150–200 ft altitude; release at 120–150 knots.
+3. **Safety**: Avoid populated areas; confirm wind direction.
+
+### Crew Transport
+- **Helitack Teams**: Deployed via helicopter to remote areas.
+- **Safety Checks**: Pre-flight briefings, weight limits, escape routes.
+
+### Logistics
+- **Tanker Bases**: 207 airports supported U.S. VLAT/LAT ops in 2024.
+- **Challenges**: Runway length, weight-bearing capacity, refueling.
+
+---
+
+## 4. Data and Statistics
+- **Efficiency**: NASA’s AVIRIS-3 sensor reduced fire detection time to minutes (Alabama case study, 2025).
+- **Fleet Age**: U.S. aerial tankers averaged 33.5 years in 2024.
+- **Performance**: 88% of days in 2024 had aerial firefighting flights (max: 200 flights/day).
+
+---
+
+## 5. Case Studies
+### Castleberry Fire (Alabama, 2025)
+- **Technology**: AVIRIS-3 real-time infrared mapping.
+- **Outcome**: 120-acre fire contained via satellite-relayed data to ground crews.
+
+### Grenfell Tower (London, 2017)
+- **Lessons**: Highlighted need for high-rise aerial support and drone-assisted evacuations.
+
+---
+
+## 6. Future Trends
+- **AI**: Predictive modeling for fire spread.
+- **Airships**: Prototypes for heavy-lift water delivery.
+- **Automation**: Autonomous drones for night ops.

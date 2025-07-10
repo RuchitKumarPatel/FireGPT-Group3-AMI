@@ -29,7 +29,7 @@ current_model = None
 print("[INFO] Loading and splitting document...")
 loader = TextLoader("wildfire_docs/data.txt", encoding="utf-8")
 documents = loader.load()
-text_splitter = CharacterTextSplitter(chunk_size=10000, chunk_overlap=500)
+text_splitter = CharacterTextSplitter(chunk_size=5000, chunk_overlap=200)
 docs = text_splitter.split_documents(documents)
 
 # === Create/load FAISS vectorstore ===
@@ -61,7 +61,8 @@ def load_llm(model_path=None, use_dummy=False):
             try:
                 llm = LlamaCpp(
                     model_path=model_path,
-                    n_ctx=2048,
+                    n_ctx=4096,
+                    max_tokens=2048,
                     n_threads=os.cpu_count(),
                     temperature=0.5,
                     chat_format="llama-2",
@@ -91,9 +92,14 @@ else:
 
 # === Prompt template ===
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a wildfire response expert. Use the provided context to answer the user's question."),
-    ("human", "Context:\n{context}\n\nQuestion: {question}")
+    ("system",
+     "You are a wildfire response expert. Use the context to generate clear, realistic, and safety-first response plans. "
+     "Respond as if advising an incident commander. If a location is mentioned, take it into account."),
+    ("human", 
+     "Context:\n{context}\n\n"
+     "Question: {question}")
 ])
+
 
 def truncate_docs(docs, max_chars=6000):
     return "\n\n".join(doc.page_content for doc in docs)[:max_chars]
@@ -252,10 +258,21 @@ def geocode_place(place_name):
     return None, None
 
 def extract_place_name(question):
-    # Very basic: match common fire locations or known patterns
-    match = re.search(r'fire.*in ([A-Za-z ,]+)', question.lower())
-    if match:
-        return match.group(1).strip()
+    # Normalize text
+    question = question.strip()
+
+    # Match patterns like: "fire in California", "wildfire near Los Angeles", etc.
+    patterns = [
+        r'(?:fire|wildfire|incident)?\s*(?:in|at|near|around)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)', 
+        r'(?:in|at|near|around)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*(?:fire|wildfire)?',          
+        r'([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:fire|wildfire)'                                    
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, question)
+        if match:
+            return match.group(1).strip()
+
     return None
 
 
@@ -317,5 +334,5 @@ def fetch_surroundings(lat, lon, radius=10000):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='127.0.0.1', port=5000, debug=False)
     print("[INFO] FireGPT server started on http://localhost:5000")
