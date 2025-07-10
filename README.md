@@ -111,12 +111,6 @@ This is the easiest and most reliable way to get FireGPT running.
   - Support for file uploads to supplement queries.
   - Full message history and auto-scrolling.
 
-### 📁 File Upload
-
-  - Drag & drop support for multiple files.
-  - Validation for file types and size limits.
-  - Progress indicators for a smooth user experience.
-
 ### 🗺️ Map Integration
 
   - Includes a placeholder for a world map.
@@ -165,17 +159,3 @@ This is the easiest and most reliable way to get FireGPT running.
   - You will need to re-run the indexing script (not detailed here) to update the `faiss_index` for the new documents to be included in responses.
 
 -----
-
-## 📦 Deployment
-
-The static files and server are ready for production deployment:
-
-  - **Containerized:** The `Dockerfile` ensures consistent deployment anywhere.
-  - **Cache-Friendly:** Separated CSS and JS files for better browser caching.
-  - **Optimized:** Frontend assets are structured for minification and CDN compatibility.
-
-## 🔒 Security
-
-  - **Input Validation:** The backend should validate all inputs.
-  - **HTML Sanitization:** User-generated content displayed in the chat is sanitized to prevent XSS attacks.
-  - **File Validation:** File uploads are validated by type and size to prevent malicious uploads.
