@@ -16,7 +16,7 @@ The goal is to bridge the gap between complex firefighting documentation and the
 
 ## 🚀 Getting Started
 
-To run FireGPT on your local machine, you can use Docker (recommended), Conda, or a standard Python virtual environment.
+To run FireGPT on your local machine, you can use Docker, Conda, or a standard Python virtual environment.
 
 ### Prerequisites
 
@@ -24,6 +24,7 @@ To run FireGPT on your local machine, you can use Docker (recommended), Conda, o
   - Docker (for Docker method)
   - Conda (for Conda method)
   - Python 3.9+ (for venv method)
+  - Download .gguf from https://drive.google.com/file/d/1UIsEhE8eyYDlUFDFmOGA7MFfjeSNiIlR/view?usp=share_link
 
 ### Option 1: Run with Docker (Recommended)
 
@@ -36,19 +37,22 @@ This is the easiest and most reliable way to get FireGPT running.
     cd FireGPT
     ```
 
-2.  **Build the Docker image:**
+2.  **Add the .gguf file to the repository:**
+    FireGPT/llama-2-7b-chat.Q4_K_M.gguf
+
+3.  **Build the Docker image:**
 
     ```bash
     docker build -t firegpt .
     ```
 
-3.  **Run the Docker container:**
+4.  **Run the Docker container:**
 
     ```bash
     docker run -p 5000:5000 firegpt
     ```
 
-4.  Open your browser and navigate to `http://127.0.0.1:5000`.
+5.  Open your browser and navigate to `http://127.0.0.1:5000`.
 
 ### Option 2: Run with Conda
 
@@ -159,3 +163,27 @@ This is the easiest and most reliable way to get FireGPT running.
   - You will need to re-run the indexing script (not detailed here) to update the `faiss_index` for the new documents to be included in responses.
 
 -----
+
+### ⚙️ Running the Model: Host & Port Configuration
+
+Depending on your environment, you need to adjust the `app.run()` configuration at the bottom of `app.py`:
+
+#### 🐳 When Running in a Docker Container:
+
+Use the following configuration to expose the server to external access:
+
+```python
+app.run(host='0.0.0.0', port=5000, debug=False)
+```
+
+#### 💻 When Running in a Local Conda Environment:
+
+Use the loopback address to restrict access to your local machine:
+
+```python
+app.run(host='127.0.0.1', port=5000, debug=False)
+```
+
+> **Note:** Ensure that the specified `port` (e.g., `5000`) is **not already in use**. You can modify the port number if necessary to avoid conflicts.
+
+----
