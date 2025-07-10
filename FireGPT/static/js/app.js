@@ -101,9 +101,16 @@ async function sendMessage() {
         
         // Check if response contains location data and update map
         if (data.response) {
-            handleMapIntegration(data.response, message);
+            // Show bot response
+            appendMessage(data.response, 'bot');
+
+            // Automatically add marker if LLM returned coordinates
+            if (data.location && window.mapManager) {
+                const { name, lat, lon } = data.location;
+                mapManager.highlightDetectedLocation(name, lat, lon); // <-- add this method below
+            }
         }
-        
+
     } catch (error) {
         removeTypingIndicator();
         appendMessage('Sorry, there was an error processing your request. Please try again.', 'bot');

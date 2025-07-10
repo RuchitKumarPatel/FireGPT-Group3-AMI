@@ -177,6 +177,13 @@ class MapManager {
         }
     }
 
+    highlightDetectedLocation(name, lat, lon) {
+        this.clearMarkers();  // optional: remove old markers
+        this.addMarker(lat, lon, `📍 ${name}`, this.fireIcon);
+        this.map.setView([lat, lon], 8);
+    }
+
+
     resetView() { this.map.setView([20, 0], 3); }
     clearMarkers() { this.markers.forEach(m => this.map.removeLayer(m.marker)); this.markers = []; }
     enableFirePlacement() { this.placingFire = true; alert("Click on the map to place a fire location."); }

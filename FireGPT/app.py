@@ -11,6 +11,7 @@ import os
 import argparse
 import glob
 import requests
+import re
 from threading import Lock
 
 app = Flask(__name__)
@@ -60,9 +61,9 @@ def load_llm(model_path=None, use_dummy=False):
             try:
                 llm = LlamaCpp(
                     model_path=model_path,
-                    n_ctx=4096,
+                    n_ctx=2048,
                     n_threads=os.cpu_count(),
-                    temperature=0.7,
+                    temperature=0.5,
                     chat_format="llama-2",
                     verbose=True
                 )
@@ -144,19 +145,22 @@ def ask():
     query = request.json.get("query")
     if not query:
         return jsonify({"error": "No query provided."}), 400
-    
+
     rag_chain = get_rag_chain()
     result = rag_chain.invoke(query)
-    
-    location_keywords = ['fire', 'wildfire', 'burning', 'location', 'where', 'show me', 'california', 'australia', 'amazon']
-    has_location = any(keyword in query.lower() for keyword in location_keywords)
-    
-    if has_location:
-        enhanced_result = f"{result}\n\nI've marked this location on the map for you. You can see the fire incident marker and get more details by clicking on it."
-    else:
-        enhanced_result = result
-    
-    return jsonify({"response": enhanced_result})
+
+    # Try to extract and geocode location
+    place_name = extract_place_name(query)
+    lat, lon = geocode_place(place_name) if place_name else (None, None)
+
+    return jsonify({
+        "response": result,
+        "location": {
+            "name": place_name,
+            "lat": lat,
+            "lon": lon
+        } if lat and lon else None
+    })
 
 
 @app.route("/plan_action", methods=["POST"])
@@ -229,6 +233,30 @@ def plan_action():
     except Exception as e:
         print(f"[ERROR] in /plan_action: {e}")
         return jsonify({"error": str(e)}), 500
+    
+def geocode_place(place_name):
+    url = "https://nominatim.openstreetmap.org/search"
+    params = {
+        "q": place_name,
+        "format": "json",
+        "limit": 1
+    }
+    headers = {
+        "User-Agent": "FireGPT/1.0"
+    }
+
+    response = requests.get(url, params=params, headers=headers)
+    if response.status_code == 200 and response.json():
+        data = response.json()[0]
+        return float(data["lat"]), float(data["lon"])
+    return None, None
+
+def extract_place_name(question):
+    # Very basic: match common fire locations or known patterns
+    match = re.search(r'fire.*in ([A-Za-z ,]+)', question.lower())
+    if match:
+        return match.group(1).strip()
+    return None
 
 
 def fetch_surroundings(lat, lon, radius=10000):
