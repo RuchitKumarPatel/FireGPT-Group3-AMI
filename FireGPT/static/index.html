@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FireGPT 🔥 - Wildfire Response Assistant</title>
+  
+  <!-- External Resources -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Leaflet CSS and JS for Interactive Maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  
+  <style>
+    /* Fallback styles in case external CSS fails to load */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #1a1a1a;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .app-container {
+      display: flex;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+    }
+    
+    .chat-section {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .map-section {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      background: #f8f9fa;
+    }
+    
+    /* Map specific styles */
+    #map {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    
+    .map-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      background: white;
+      border-radius: 8px;
+      padding: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .map-controls button {
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      margin: 2px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+    
+    .map-controls button:hover {
+      background: #5a67d8;
+    }
+  </style>
+</head>
+<body>
+  <div id="model-selector" style="position:fixed;top:10px;right:16px;z-index:2000;opacity:0.7;font-size:0.95em;background:rgba(255,255,255,0.85);border-radius:6px;padding:4px 10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);display:flex;align-items:center;gap:6px;">
+    <label for="llm-select" style="margin-right:2px;">Model:</label>
+    <select id="llm-select" style="padding:2px 8px;font-size:0.97em;"></select>
+  </div>
+  <div class="app-container">
+    <!-- Chat Section -->
+    <div class="chat-section">
+      <div class="chat-header">
+        <i class="fas fa-fire"></i>
+        <h1>FireGPT</h1>
+        <div class="status">Online</div>
+      </div>
+      
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+          <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="message-content">
+            Hello! I'm FireGPT, your wildfire response assistant. I can help you with firefighting strategies, safety protocols, and emergency response. You can also upload images or files for analysis. Try asking me about a specific fire location and I'll show it on the map!
+          </div>
+        </div>
+      </div>
+      
+      <div class="chat-input">
+        <div class="input-container">
+          <div class="file-upload tooltip">
+            <i class="fas fa-paperclip"></i>
+            <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,.txt" multiple>
+            <span class="tooltiptext">Upload files or images</span>
+          </div>
+          
+          <div class="input-wrapper">
+            <textarea 
+              class="chat-textarea" 
+              id="messageInput" 
+              placeholder="Ask about wildfire response strategies or specific fire locations..."
+              rows="1"
+              maxlength="1000"
+            ></textarea>
+          </div>
+          
+          <button class="send-button" id="sendButton" onclick="sendMessage()">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Map Section -->
+    <div class="map-section">
+      <div class="map-header">
+        <h2>
+          <i class="fas fa-globe-americas"></i>
+          Global Fire Map
+        </h2>
+      </div>
+      
+      <div class="map-container">
+        <div id="map"></div>
+        <div class="map-controls">
+          <button onclick="mapManager.resetView()">Reset View</button>
+          <button onclick="mapManager.clearMarkers()">Clear Markers</button>
+          <button onclick="mapManager.enableFirePlacement()">Add Fire Location</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files (load in order) -->
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/map-manager.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+    // Debug script to check if everything loaded properly
+    console.log('FireGPT loaded successfully!');
+    console.log('CONFIG loaded:', !!window.CONFIG);
+    console.log('UTILS loaded:', !!window.UTILS);
+    console.log('Map Manager loaded:', !!window.mapManager);
+    console.log('CSS files loaded:', document.styleSheets.length);
+  </script>
+
+  <script>
+    function displayBotMessage(message) {
+      const chatMessages = document.getElementById('chatMessages');
+      
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message', 'bot');
+      
+      // Sanitize the message to prevent HTML injection if the model output is untrusted
+      const sanitizedMessage = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      
+      messageElement.innerHTML = `
+        <div class="message-avatar">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="message-content">
+          ${sanitizedMessage.replace(/\n/g, '<br>')}
+        </div>
+      `;
+      
+      chatMessages.appendChild(messageElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the new message
+    }
+  </script>
+</body>
+</html>
