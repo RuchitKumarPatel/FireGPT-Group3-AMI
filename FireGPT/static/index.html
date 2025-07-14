@@ -114,8 +114,10 @@
       <div class="chat-input">
         <div class="input-container">
           <div class="file-upload tooltip">
-            <i class="fas fa-paperclip"></i>
-            <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,.txt" multiple>
+            <label style="cursor:pointer; margin:0; display:flex; align-items:center;">
+              <i class="fas fa-paperclip"></i>
+              <input type="file" id="fileInput" accept="image/*,.pdf" multiple style="display:none;">
+            </label>
             <span class="tooltiptext">Upload files or images</span>
           </div>
           

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, abort
 from langchain_community.llms import LlamaCpp
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -13,8 +13,22 @@ import glob
 import requests
 import re
 from threading import Lock
+from werkzeug.utils import secure_filename
+from pdf2image import convert_from_path
+from PIL import Image
+import pytesseract
+import pdfplumber
+import magic  # python-magic for MIME type checking
+
+# config
+UPLOAD_FOLDER = 'wildfire_docs/ocr_uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'bmp', 'tiff', 'pdf'}
+MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16 MB upload limit
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = MAX_CONTENT_LENGTH
 
 # === Parse command line arguments ===
 parser = argparse.ArgumentParser(description='FireGPT - Wildfire Response RAG System')
@@ -333,6 +347,81 @@ def fetch_surroundings(lat, lon, radius=10000):
     return surroundings
 
 
+# === Helpers ===
+def allowed_file(filename):
+    ext = filename.rsplit('.', 1)[1].lower() if '.' in filename else ''
+    return ext in ALLOWED_EXTENSIONS
+
+# OCR function using pytesseract and pdfplumber
+
+def run_ocr(path, ext):
+    try:
+        if ext == '.pdf':
+            # Try direct text extraction with pdfplumber
+            text = ''
+            with pdfplumber.open(path) as pdf:
+                for page in pdf.pages:
+                    t = page.extract_text()
+                    if t:
+                        text += t + '\n'
+            if text.strip():
+                return text
+            # Fallback to image-based OCR
+            images = convert_from_path(path)
+            text = ''
+            for img in images:
+                text += pytesseract.image_to_string(img) + '\n'
+            return text
+        else:
+            img = Image.open(path)
+            return pytesseract.image_to_string(img)
+    except Exception as e:
+        app.logger.error(f"OCR error for {path}: {e}")
+        return None
+
+# === Routes ===
+@app.route('/upload_doc', methods=['POST'])
+def upload_doc():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
+    if not allowed_file(file.filename):
+        return jsonify({'error': 'Unsupported file extension'}), 400
+
+    filename = secure_filename(file.filename)
+    ext = os.path.splitext(filename)[1].lower()
+    path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save(path)
+
+    mime = magic.from_file(path, mime=True)
+    if (ext == '.pdf' and mime != 'application/pdf') or (ext != '.pdf' and not mime.startswith('image/')):
+        os.remove(path)
+        return jsonify({'error': 'MIME mismatch'}), 400
+
+    text = run_ocr(path, ext)
+    # Cleanup intermediate images
+    for f in os.listdir(app.config['UPLOAD_FOLDER']):
+        if f.startswith(filename + '_page_') and f.endswith('.png'):
+            try: os.remove(os.path.join(app.config['UPLOAD_FOLDER'], f))
+            except: pass
+
+    if not text or not text.strip():
+        os.remove(path)
+        return jsonify({'error': 'OCR failed or no text'}), 500
+
+    txt_path = path + '.txt'
+    with open(txt_path, 'w', encoding='utf-8') as f:
+        f.write(text)
+    loader = TextLoader(txt_path, encoding='utf-8')
+    new_docs = loader.load()
+    global vectorstore
+    vectorstore.add_documents(new_docs)
+    vectorstore.save_local('faiss_index')
+
+    return jsonify({'success': True, 'text': text})
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=False)
-    print("[INFO] FireGPT server started on http://localhost:5000")

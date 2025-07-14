@@ -28,9 +28,38 @@ function initializeEventListeners() {
     fileInput.addEventListener('change', handleFileUpload);
 }
 
+// === OCR Upload Logic ===
+async function uploadFileForOCR(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+        const res = await fetch('/upload_doc', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+        if (data.success) {
+            showModelToast('OCR complete! Text added to knowledge base.', false);
+            // Optionally, show extracted text or refresh chat
+            // alert('Extracted text:\n' + data.text.slice(0, 500));
+        } else {
+            showModelToast('OCR failed: ' + (data.error || 'Unknown error'), true);
+        }
+    } catch (e) {
+        showModelToast('OCR upload error', true);
+    }
+}
+
+// Patch file upload handler to use OCR for images and PDFs
 function handleFileUpload(e) {
     const files = Array.from(e.target.files);
     files.forEach(file => {
+        const ext = file.name.split('.').pop().toLowerCase();
+        if (["png","jpg","jpeg","bmp","tiff","pdf"].includes(ext)) {
+            uploadFileForOCR(file);
+        } else {
+            showModelToast('Unsupported file type: ' + file.name, true);
+        }
         if (file.type.startsWith('image/')) {
             displayImageMessage(file);
         } else {

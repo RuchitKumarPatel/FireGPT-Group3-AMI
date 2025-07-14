@@ -8,9 +8,12 @@ This application uses a **Retrieval-Augmented Generation (RAG)** pipeline to del
 
 1.  **Understands the Query:** It interprets the user's request for information (e.g., "What is the best way to handle a flank fire in a dense forest?").
 2.  **Retrieves Relevant Knowledge:** It queries a specialized knowledge base of firefighting documents (located in the `wildfire_docs/` directory) using a high-speed FAISS vector index. This ensures the information is based on established doctrine and operational guides.
+
+    Users can upload images and PDF documents using the paperclip icon in the chat. The system extracts text from these files using OCR and adds it to the knowledge base, making the content available for LLM responses.
 3.  **Generates Actionable Answers:** The AI synthesizes the retrieved information to generate a clear, concise, and actionable response, helping teams on the ground make informed decisions quickly.
 
 The goal is to bridge the gap between complex firefighting documentation and the immediate, critical needs of personnel in the field.
+
 
 -----
 
