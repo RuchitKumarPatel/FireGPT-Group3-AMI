@@ -126,7 +126,7 @@ async function sendMessage() {
         removeTypingIndicator();
         
         // Add bot response
-        appendMessage(data.response || 'Sorry, I couldn\'t process your request.', 'bot');
+        appendMessage(data.response || 'Sorry, I couldn\'t process your request.', 'bot', data.is_html === true);
         
         // Check if response contains location data and update map
         if (data.response) {
@@ -214,7 +214,8 @@ function appendMessage(content, sender, isHTML = false) {
     contentDiv.className = 'message-content';
     
     if (isHTML) {
-        contentDiv.innerHTML = content;
+        // Use marked.js to render Markdown as HTML
+        contentDiv.innerHTML = marked.parse(content);
     } else {
         contentDiv.textContent = content;
     }

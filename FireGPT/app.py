@@ -108,7 +108,15 @@ else:
 prompt = ChatPromptTemplate.from_messages([
     ("system",
      "You are a wildfire response expert. Use the context to generate clear, realistic, and safety-first response plans. "
-     "Respond as if advising an incident commander. If a location is mentioned, take it into account."),
+     "Respond as if advising an incident commander. If a location is mentioned, take it into account. "
+     "Always answer using the following sections, even if some are brief or not applicable:\n"
+     "1. Situation Overview\n"
+     "2. Immediate Actions\n"
+     "3. Resource Utilization\n"
+     "4. Safety Considerations\n"
+     "5. Ongoing Monitoring\n"
+     "Format your answer using Markdown. Use clear section headers (##), numbered or bulleted lists, and tables where appropriate (for resources, action steps, or summaries). Make the output easy to read and visually organized."
+    ),
     ("human", 
      "Context:\n{context}\n\n"
      "Question: {question}")
@@ -128,6 +136,39 @@ def get_rag_chain():
         | llm
         | StrOutputParser()
     )
+
+def to_markdown(text):
+    """
+    Post-process LLM output to convert section headers and lists to Markdown.
+    - Converts section headers (e.g., Situation Overview) to ## headers
+    - Converts numbered and bulleted lists to Markdown lists
+    - Optionally, you can add more rules for tables if needed
+    """
+    import re
+    # Convert section headers to Markdown (## Header)
+    section_headers = [
+        'Situation Overview',
+        'Immediate Actions',
+        'Resource Utilization',
+        'Safety Considerations',
+        'Ongoing Monitoring',
+        'Action Plan for Fire at',
+        'Context',
+        'Question',
+        'Summary',
+        'Instructions',
+        'Recommendations',
+        'Plan',
+    ]
+    for header in section_headers:
+        # Match header at start of line, possibly followed by colon
+        text = re.sub(rf'(^|\n)\s*{re.escape(header)}\s*:?\s*\n', rf'\1## {header}\n', text)
+    # Convert numbered lists (1. ...)
+    text = re.sub(r'(^|\n)\s*(\d+)\.\s+', r'\1\2. ', text)
+    # Convert bulleted lists (- ...)
+    text = re.sub(r'(^|\n)\s*-\s+', r'\1- ', text)
+    # Optionally, add more rules for tables if you can detect them
+    return text
 
 # === Model management endpoints ===
 @app.route("/models", methods=["GET"])
@@ -173,13 +214,17 @@ def ask():
     place_name = extract_place_name(query)
     lat, lon = geocode_place(place_name) if place_name else (None, None)
 
+    # Post-process to Markdown
+    markdown_result = to_markdown(result)
+
     return jsonify({
-        "response": result,
+        "response": markdown_result,
         "location": {
             "name": place_name,
             "lat": lat,
             "lon": lon
-        } if lat and lon else None
+        } if lat and lon else None,
+        "is_html": True
     })
 
 
@@ -246,9 +291,13 @@ def plan_action():
             "water_sources": [{"lat": loc["lat"], "lon": loc["lon"]} for loc in resource_categories["Water Source"]]
         }
 
+        # Post-process to Markdown
+        markdown_plan = to_markdown(plan)
+
         return jsonify({
-            "plan": plan,
-            "markers": markers
+            "plan": markdown_plan,
+            "markers": markers,
+            "is_html": True
         })
     except Exception as e:
         print(f"[ERROR] in /plan_action: {e}")
