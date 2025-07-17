@@ -49,7 +49,7 @@ class MapManager {
                     return;
                 }
 
-                displayBotMessage("🔥 **Fire Action Plan**\n\n" + data.plan);
+                displayBotMessage(data.plan);
                 
                 // Add fire marker
                 this.addMarker(data.markers.fire.lat, data.markers.fire.lon, "🔥 Fire Location", this.fireIcon);
