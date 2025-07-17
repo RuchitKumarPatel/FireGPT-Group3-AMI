@@ -304,21 +304,24 @@ def plan_action():
         return jsonify({"error": str(e)}), 500
     
 def geocode_place(place_name):
-    url = "https://nominatim.openstreetmap.org/search"
-    params = {
-        "q": place_name,
-        "format": "json",
-        "limit": 1
-    }
-    headers = {
-        "User-Agent": "FireGPT/1.0"
-    }
+    try:
+        url = "https://nominatim.openstreetmap.org/search"
+        params = {
+            "q": place_name,
+            "format": "json",
+            "limit": 1
+        }
+        headers = {
+            "User-Agent": "FireGPT/1.0"
+        }
 
-    response = requests.get(url, params=params, headers=headers)
-    if response.status_code == 200 and response.json():
-        data = response.json()[0]
-        return float(data["lat"]), float(data["lon"])
-    return None, None
+        response = requests.get(url, params=params, headers=headers)
+        if response.status_code == 200 and response.json():
+            data = response.json()[0]
+            return float(data["lat"]), float(data["lon"])
+        return None, None
+    except:
+        return None, None
 
 def extract_place_name(question):
     # Normalize text
@@ -340,60 +343,63 @@ def extract_place_name(question):
 
 
 def fetch_surroundings(lat, lon, radius=10000):
-    overpass_query = f"""
-    [out:json][timeout:25];
-    (
-      node["amenity"="fire_station"](around:{radius},{lat},{lon});
-      node["amenity"="police"](around:{radius},{lat},{lon});
-      node["amenity"="hospital"](around:{radius},{lat},{lon});
-      node["natural"="water"](around:{radius},{lat},{lon});
-      node["highway"="residential"](around:{radius},{lat},{lon});
-      way["landuse"="forest"](around:{radius},{lat},{lon});
-      way["natural"="water"](around:{radius},{lat},{lon});
-    );
-    out center;
-    """
+    try:
+        overpass_query = f"""
+        [out:json][timeout:25];
+        (
+        node["amenity"="fire_station"](around:{radius},{lat},{lon});
+        node["amenity"="police"](around:{radius},{lat},{lon});
+        node["amenity"="hospital"](around:{radius},{lat},{lon});
+        node["natural"="water"](around:{radius},{lat},{lon});
+        node["highway"="residential"](around:{radius},{lat},{lon});
+        way["landuse"="forest"](around:{radius},{lat},{lon});
+        way["natural"="water"](around:{radius},{lat},{lon});
+        );
+        out center;
+        """
 
-    url = "https://overpass-api.de/api/interpreter"
-    response = requests.post(url, data=overpass_query)
-    data = response.json()
+        url = "https://overpass-api.de/api/interpreter"
+        response = requests.post(url, data=overpass_query)
+        data = response.json()
 
-    surroundings = []
+        surroundings = []
 
-    for element in data.get("elements", []):
-        tags = element.get("tags", {})
-        name = tags.get("name", "Unnamed location")
-        
-        location_type = "Unknown"
-        if "amenity" in tags:
-            location_type = f"{tags['amenity'].replace('_', ' ').title()}"
-        elif "natural" in tags:
-            location_type = f"{tags['natural'].replace('_', ' ').title()}"
-        elif "landuse" in tags:
-            location_type = f"{tags['landuse'].replace('_', ' ').title()}"
-        elif "highway" in tags:
-            location_type = "Road"
+        for element in data.get("elements", []):
+            tags = element.get("tags", {})
+            name = tags.get("name", "Unnamed location")
+            
+            location_type = "Unknown"
+            if "amenity" in tags:
+                location_type = f"{tags['amenity'].replace('_', ' ').title()}"
+            elif "natural" in tags:
+                location_type = f"{tags['natural'].replace('_', ' ').title()}"
+            elif "landuse" in tags:
+                location_type = f"{tags['landuse'].replace('_', ' ').title()}"
+            elif "highway" in tags:
+                location_type = "Road"
 
-        if element["type"] == "node":
-            el_lat = element.get("lat")
-            el_lon = element.get("lon")
-        else:
-            center = element.get("center", {})
-            el_lat = center.get("lat")
-            el_lon = center.get("lon")
+            if element["type"] == "node":
+                el_lat = element.get("lat")
+                el_lon = element.get("lon")
+            else:
+                center = element.get("center", {})
+                el_lat = center.get("lat")
+                el_lon = center.get("lon")
 
-        if el_lat is not None and el_lon is not None:
-            surroundings.append({
-                "name": name,
-                "type": location_type,
-                "lat": el_lat,
-                "lon": el_lon,
-                "distance": ((el_lat - lat)**2 + (el_lon - lon)**2)**0.5 * 111.32  # approx km
-            })
+            if el_lat is not None and el_lon is not None:
+                surroundings.append({
+                    "name": name,
+                    "type": location_type,
+                    "lat": el_lat,
+                    "lon": el_lon,
+                    "distance": ((el_lat - lat)**2 + (el_lon - lon)**2)**0.5 * 111.32  # approx km
+                })
 
-    # Sort by distance
-    surroundings.sort(key=lambda x: x["distance"])
-    return surroundings
+        # Sort by distance
+        surroundings.sort(key=lambda x: x["distance"])
+        return surroundings
+    except:
+        return []
 
 
 # === Helpers ===
